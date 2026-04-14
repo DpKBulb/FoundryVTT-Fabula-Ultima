@@ -49,11 +49,22 @@ export class ClassesTableRenderer extends FUTableRenderer {
 			const actor = item.parent;
 			const skillTracker = new CharacterSkillTracker(actor.system);
 			const current = skillTracker.getClassLevel(item.name);
-			data = { current: current, max: ClassDataModel.MAX_LEVEL };
+			data = { current: current, max: ClassDataModel.MAX_LEVEL, action: 'modifyClassLevel' };
 		}
 		if (item.type === 'mnemosphere') {
 			data = { current: item.system.level, max: item.system.maxLevel, action: 'modifyLevel' };
 		}
 		return foundry.applications.handlebars.renderTemplate('systems/projectfu/templates/table/cell/cell-class-level.hbs', data);
 	}
+
+    // static async #renderLevelCell(item) {
+	// 	let data;
+	// 	if (item.type === 'class') {
+	// 		data = { current: item.system.level.value, max: item.system.level.max, action: 'modifyClassLevel' };
+	// 	}
+	// 	if (item.type === 'mnemosphere') {
+	// 		data = { current: item.system.level, max: item.system.maxLevel, action: 'modifyLevel' };
+	// 	}
+	// 	return foundry.applications.handlebars.renderTemplate('systems/projectfu/templates/table/cell/cell-class-level.hbs', data);
+	// }
 }

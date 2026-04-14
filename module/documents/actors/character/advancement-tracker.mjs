@@ -373,7 +373,7 @@ export class AdvancementTracker {
 					// TODO: Error if same class added twice?
 					classSkills[classIdentifier] = [];
 					classes[classIdentifier] = {
-						level: 0,
+						level: system.level.value,
 						id: data.class.id,
 						img: classItem.img,
 					};
@@ -420,9 +420,9 @@ export class AdvancementTracker {
 							}
 							// B. Mark SL investment
 							else {
-								skillLevels[skillIdentifier]++;
+								skillLevels[skillIdentifier]++
 							}
-							classes[classIdentifier].level++;
+							// classes[classIdentifier].level++;
 							resolvedSkill = true;
 
 							// If a heroic is unlocked
