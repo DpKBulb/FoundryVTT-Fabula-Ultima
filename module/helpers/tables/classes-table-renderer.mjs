@@ -1,7 +1,6 @@
 import { FUTableRenderer } from './table-renderer.mjs';
 import { CommonColumns } from './common-columns.mjs';
 import { CommonDescriptions } from './common-descriptions.mjs';
-import { CharacterSkillTracker } from '../../documents/actors/character/character-skill-tracker.mjs';
 import { ClassDataModel } from '../../documents/items/class/class-data-model.mjs';
 
 export class ClassesTableRenderer extends FUTableRenderer {
@@ -46,10 +45,10 @@ export class ClassesTableRenderer extends FUTableRenderer {
 	static async #renderLevelCell(item) {
 		let data;
 		if (item.type === 'class') {
-			const actor = item.parent;
-			const skillTracker = new CharacterSkillTracker(actor.system);
-			const current = skillTracker.getClassLevel(item.name);
-			data = { current: current, max: ClassDataModel.MAX_LEVEL, action: 'modifyClassLevel' };
+			// const actor = item.parent;
+			// const skillTracker = new CharacterSkillTracker(actor.system);
+			// const current = skillTracker.getClassLevel(item.name);
+			data = { current: item.system.level.value, max: ClassDataModel.MAX_LEVEL, action: 'modifyClassLevel' };
 		}
 		if (item.type === 'mnemosphere') {
 			data = { current: item.system.level, max: item.system.maxLevel, action: 'modifyLevel' };
@@ -57,7 +56,7 @@ export class ClassesTableRenderer extends FUTableRenderer {
 		return foundry.applications.handlebars.renderTemplate('systems/projectfu/templates/table/cell/cell-class-level.hbs', data);
 	}
 
-    // static async #renderLevelCell(item) {
+	// static async #renderLevelCell(item) {
 	// 	let data;
 	// 	if (item.type === 'class') {
 	// 		data = { current: item.system.level.value, max: item.system.level.max, action: 'modifyClassLevel' };

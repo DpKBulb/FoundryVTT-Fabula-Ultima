@@ -120,10 +120,10 @@ export class ClassDataModel extends FUStandardItemDataModel {
 	 */
 	modifyClassLevel(event, target) {
 		const change = target.closest('[data-level-action]')?.dataset?.levelAction === 'decrement' ? -1 : 1;
-	
+
 		const { value, min, max } = this.level;
 		const newValue = value + change;
-	
+
 		return this.parent.update({
 			'system.level.value': Math.clamp(newValue, min, max),
 		});

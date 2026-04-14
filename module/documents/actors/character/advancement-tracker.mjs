@@ -420,7 +420,7 @@ export class AdvancementTracker {
 							}
 							// B. Mark SL investment
 							else {
-								skillLevels[skillIdentifier]++
+								skillLevels[skillIdentifier]++;
 							}
 							// classes[classIdentifier].level++;
 							resolvedSkill = true;
